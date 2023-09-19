@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.highbee"
-        minSdk = 28
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -36,6 +36,7 @@ android {
     viewBinding{
         enable = true
     }
+    compileSdk = 33
 }
 
 dependencies {
@@ -43,7 +44,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
