@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Termos de uso\n"
+                android:textSize="38dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppinsmedium"
+                />
+
+            <TextView
+                android:id="@+id/termsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/terms"
+                android:lineSpacingExtra="4dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppinsmedium"/>
+
+                <CheckBox
+                    android:id="@+id/meuCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/chkText"
+                    android:fontFamily="@font/poppinssemibolditalic"/>
+
+                <TextView
+                    android:id="@+id/haveAccess"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginVertical="16dp"
+                    android:background="@drawable/default_button"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:text="Finalizar"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
+

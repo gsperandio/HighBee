@@ -104,7 +104,7 @@
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/Access"
+            android:id="@+id/register"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
