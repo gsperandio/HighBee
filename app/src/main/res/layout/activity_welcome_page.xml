@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".controller.WelcomePage">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:contentDescription="Bem-vindo à nossa causa"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wallpaper" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:paddingHorizontal="32dp"
+        android:text="Bem-vindo à nossa causa"
+        android:textAlignment="center"
+        android:textColor="#121212"
+        android:textSize="34sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewMega"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="0dp"
+        android:text="Aqui suas escolhas são feitas sobre produtos que são a base da vida."
+        android:textSize="15sp"
+        android:fontFamily="@font/poppinsitalic"
+        android:textAlignment="center"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/dontHaveAccess"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp"
+        android:background="@drawable/default_button"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Primeiro acesso"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="128dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="128dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/haveAccess"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/default_button"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Tenho uma conta"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+</LinearLayout>

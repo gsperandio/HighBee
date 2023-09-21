@@ -31,77 +31,97 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            >
 
             <EditText
+                android:id="@+id/numberOne"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/numberTwo"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/numberThree"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/numberFour"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/numberFive"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/numberSix"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
                 android:hint="-"
                 android:textAlignment="center"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
 

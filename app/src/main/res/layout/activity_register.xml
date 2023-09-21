@@ -3,7 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color">
+    android:background="@drawable/background_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,14 +89,19 @@
                     android:text="+55" />
             </FrameLayout>
 
-            <EditText
+            <com.santalu.maskara.widget.MaskEditText
+                android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_input"
-                android:hint="(00) 00000 - 0000"
+                android:inputType="number"
+                android:textSize="12sp"
+                android:hint="(00) 00000-0000"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                app:mask="(__) _____-____"
+                app:maskCharacter="_"
+                app:maskStyle="completable" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

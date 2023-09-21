@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HighBee"
         tools:targetApi="31">
         <activity
+            android:name=".controller.WelcomePage"
+            android:exported="false" />
+        <activity
+            android:name=".controller.HomePage"
+            android:exported="false" />
+        <activity
             android:name=".controller.TermsOfUse"
             android:exported="false" />
         <activity
