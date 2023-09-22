@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">High Bee</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_cart">Sacola</string>
+    <string name="menu_profile">Perfil</string>
 </resources>
