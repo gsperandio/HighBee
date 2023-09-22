@@ -3,6 +3,9 @@ package com.example.highbee.controller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.Toast
 import com.example.highbee.databinding.ActivityMainBinding
 
@@ -15,18 +18,30 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.haveAccess.setOnClickListener{
-            showToast()
-        }
+        supportActionBar?.hide()
 
-        binding.dontHaveAccess.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        val fadeInAnimation = AlphaAnimation(0f, 1f)
+        fadeInAnimation.duration = 1000
+        fadeInAnimation.fillAfter = true
+
+        fadeInAnimation.setAnimationListener(object : Animation.AnimationListener{
+            override fun onAnimationStart(p0: Animation?) {
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+            }
+        })
+
+        binding.logo.startAnimation(fadeInAnimation)
+
+        Handler().postDelayed({
+            val intent = Intent(this@MainActivity, WelcomePage::class.java)
             startActivity(intent)
-        }
-    }
-
-    private fun showToast(message: String = "Não adianta clicar aqui, ninguem tem conta nesse APP ainda!") {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            finish()
+        }, 1800)
     }
 }
 
