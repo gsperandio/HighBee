@@ -7,7 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".controller.HomePage"
     android:background="@drawable/background_color"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_main"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -15,6 +24,7 @@
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_menu"
         android:background="@drawable/default_footer"
+        style="@style/Widget.App.BottomNavigationView"
         />
 
 </LinearLayout>
