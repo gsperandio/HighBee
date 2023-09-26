@@ -1,4 +1,4 @@
-package com.example.highbee.controller
+package com.br.highbee.controller
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.highbee.R
-import com.example.highbee.databinding.ActivityHomePageBinding
+import com.br.highbee.R
+import com.br.highbee.databinding.ActivityHomePageBinding
 import com.google.android.material.badge.BadgeDrawable
 
 class HomePage : AppCompatActivity() {

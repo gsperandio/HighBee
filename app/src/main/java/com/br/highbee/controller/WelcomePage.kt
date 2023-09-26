@@ -1,11 +1,11 @@
-package com.example.highbee.controller
+package com.br.highbee.controller
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.highbee.R
-import com.example.highbee.databinding.ActivityWelcomePageBinding
+import com.br.highbee.R
+import com.br.highbee.databinding.ActivityWelcomePageBinding
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.lang.RuntimeException
 

@@ -1,4 +1,4 @@
-package com.example.highbee
+package com.br.highbee
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.highbee.view
+package com.br.highbee.view
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText

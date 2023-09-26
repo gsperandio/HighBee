@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/menu_home"
-        android:name="com.example.highbee.controller.fragments.HomeFragment"
+        android:name="com.br.highbee.controller.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/menu_cart"
-        android:name="com.example.highbee.controller.fragments.BagFragment"
+        android:name="com.br.highbee.controller.fragments.BagFragment"
         android:label="fragment_bag"
         tools:layout="@layout/fragment_bag" />
     <fragment
         android:id="@+id/menu_profile"
-        android:name="com.example.highbee.controller.fragments.ProfileFragment"
+        android:name="com.br.highbee.controller.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

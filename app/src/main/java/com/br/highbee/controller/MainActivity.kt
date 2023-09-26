@@ -1,4 +1,4 @@
-package com.example.highbee.controller
+package com.br.highbee.controller
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.os.Handler
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Toast
-import com.example.highbee.databinding.ActivityMainBinding
+import com.br.highbee.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
