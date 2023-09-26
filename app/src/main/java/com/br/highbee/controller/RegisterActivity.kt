@@ -20,15 +20,15 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(view)
         val firestore = FirebaseFirestore.getInstance()
         binding.register.setOnClickListener {
-            val data = hashMapOf(
-                "FirstName" to binding.nameUser.text.toString(),
-                "LastName" to binding.lastnameUser.text.toString(),
-                "Phone" to binding.celphone.text.toString()
-            )
+//            val data = hashMapOf(
+//                "FirstName" to binding.nameUser.text.toString(),
+//                "LastName" to binding.lastnameUser.text.toString(),
+//                "Phone" to binding.celphone.text.toString()
+//            )
 
-            firestore.collection("users").document("LA").set(data)
-//            val intent = Intent(this, CodeRegister::class.java)
-//            startActivity(intent)
+            //firestore.collection("users").document("LA").set(data)
+            val intent = Intent(this, CodeRegister::class.java)
+           startActivity(intent)
         }
 
         binding.nameUser.addTextChangedListener(UpperFirst(binding.nameUser))
