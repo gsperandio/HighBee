@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.highbee.R
 import com.example.highbee.databinding.ActivityWelcomePageBinding
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import java.lang.RuntimeException
 
 class WelcomePage : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomePageBinding
@@ -14,9 +16,10 @@ class WelcomePage : AppCompatActivity() {
         binding = ActivityWelcomePageBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
 
         binding.haveAccess.setOnClickListener {
-            showToast()
+            throw RuntimeException("Test Crash")
         }
 
         binding.dontHaveAccess.setOnClickListener {
