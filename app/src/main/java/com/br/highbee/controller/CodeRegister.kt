@@ -22,7 +22,6 @@ class CodeRegister : AppCompatActivity() {
         setContentView(view)
 
 
-
         binding.returningButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
