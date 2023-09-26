@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" package="com.br.highbee">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.br.highbee">
 
     <application
         android:allowBackup="true"
@@ -13,9 +14,12 @@
         android:theme="@style/Theme.HighBee"
         tools:targetApi="31">
         <activity
-            android:name=".controller.WelcomePage"
-            android:label="Home"
+            android:name=".controller.LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".controller.WelcomePage"
+            android:exported="false"
+            android:label="Home" />
         <activity
             android:name=".controller.HomePage"
             android:exported="false" />

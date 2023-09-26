@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".controller.RegisterActivity">
-
+    tools:context=".controller.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
             android:id="@+id/cadastro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Faça seu cadastro agora"
+            android:text="Faça login com seu número"
             android:textSize="32sp"
             android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/black"
@@ -29,7 +28,7 @@
             android:id="@+id/preencher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preencha os campos abaixo"
+            android:text="Preencha o campo abaixo"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsmedium"
@@ -57,31 +56,6 @@
         android:orientation="vertical"
         android:gravity="center"
         android:paddingBottom="120dp">
-
-        <EditText
-            android:id="@+id/nameUser"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/default_input"
-            android:hint="Nome"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:paddingHorizontal="10dp"
-            android:textSize="12dp" />
-
-        <EditText
-            android:id="@+id/lastnameUser"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/default_input"
-            android:hint="Sobrenome"
-            android:inputType="text"
-            android:paddingHorizontal="10dp"
-            android:textSize="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -144,10 +118,9 @@
             android:background="@drawable/default_button"
             android:fontFamily="@font/poppinssemibold"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Cadastrar"
+            android:text="Acessar"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
-
 </LinearLayout>
