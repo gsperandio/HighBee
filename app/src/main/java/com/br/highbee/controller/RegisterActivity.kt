@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.br.highbee.databinding.ActivityRegisterBinding
+import com.br.highbee.model.User
 import com.br.highbee.view.DoneToNext
 import com.br.highbee.view.SharedPref
 import com.br.highbee.view.UpperFirst
@@ -33,28 +34,36 @@ class RegisterActivity : AppCompatActivity() {
                             binding.message.visibility = View.VISIBLE
                             val handler = Handler(Looper.getMainLooper())
                             handler.postDelayed({
-                                startActivity(Intent(this, LoginActivity::class.java))
+                                val intent = Intent(this, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
                             }, 2000)
                         } else {
                             val codeValidation = numCode()
 
+                            val user = User(
+                                Code = codeValidation,
+                                FirstName = binding.nameUser.text.toString(),
+                                LastName = binding.lastnameUser.text.toString(),
+                                Phone = binding.celphone.text.toString()
+                            )
+
                             db.collection("users").document(binding.celphone.text.toString()).set(
-                                hashMapOf(
-                                    "FirstName" to binding.nameUser.text.toString(),
-                                    "LastName" to binding.lastnameUser.text.toString(),
-                                    "Phone" to binding.celphone.text.toString(),
-                                    "Code" to codeValidation
-                                )
+                                user
                             )
 
                             sharedPref.saveCache("phone", binding.celphone.text.toString())
 
-                            startActivity(Intent(this, CodeRegister::class.java))
+                            val intent = Intent(this, CodeRegister::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
                         }
                     } else {
                         val exception = task.exception
                         if (exception != null) {
-                            startActivity(Intent(this, WelcomePage::class.java))
+                            val intent = Intent(this, WelcomePage::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
                         }
                     }
                 }
@@ -68,7 +77,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.lastnameUser.setOnEditorActionListener(DoneToNext(binding.lastnameUser, binding.celphone))
     }
 
-    fun numCode(): String {
+    private fun numCode(): String {
         return String.format("%06d", Random.nextInt(999, 999999))
     }
 }

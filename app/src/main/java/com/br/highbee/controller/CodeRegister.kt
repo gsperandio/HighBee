@@ -4,8 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import com.br.highbee.R
 import com.br.highbee.databinding.ActivityCodeRegisterBinding
@@ -168,15 +171,20 @@ class CodeRegister : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     if(task.result.exists()){
-
-
-                        if(task.result.getString("code") == betweenUs())
-                            startActivity(Intent(this@CodeRegister, TermsOfUse::class.java))
+                        if(task.result.getString("code") == betweenUs()){
+                            val intent = Intent(this, TermsOfUse::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                        }else{
+                            binding.message.visibility = View.VISIBLE
+                            val handler = Handler(Looper.getMainLooper())
+                            handler.postDelayed({
+                                binding.message.visibility = View.GONE
+                            }, 2500)
+                        }
                     }
                 }
             }
-
-
     }
 
     private fun betweenUs(): String{

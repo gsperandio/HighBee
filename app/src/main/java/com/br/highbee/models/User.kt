@@ -1,5 +1,10 @@
 package com.br.highbee.model;
 
-public class User {
+data class User(
+    val FirstName: String,
+    val LastName: String,
+    val Phone: String,
+    val Code: String,
+    val Status: Boolean = false
+)
 
-}
