@@ -9,18 +9,22 @@ import android.text.TextWatcher
 import android.view.View
 import com.br.highbee.R
 import com.br.highbee.databinding.ActivityCodeRegisterBinding
+import com.br.highbee.view.SharedPref
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CodeRegister : AppCompatActivity() {
     private lateinit var binding: ActivityCodeRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCodeRegisterBinding.inflate(layoutInflater)
-        val view = binding.root
-        val stopMan = 0
         val totalTime = 30
         val countDown = 1000
-        setContentView(view)
-
+        setContentView(binding.root)
+        val sharedPref = SharedPref(this)
+        val phoneCache: String? = sharedPref.findCache("phone")
+        val db = FirebaseFirestore.getInstance()
+        val usersCollection = db.collection("users")
 
         binding.returningButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -124,8 +128,7 @@ class CodeRegister : AppCompatActivity() {
                 if(p0?.length == 0){
                     binding.numberFive.requestFocus()
                 }else{
-                    val intent = Intent(this@CodeRegister, TermsOfUse::class.java)
-                    startActivity(intent)
+                    verifyCode(usersCollection, phoneCache)
                 }
             }
 
@@ -158,4 +161,31 @@ class CodeRegister : AppCompatActivity() {
             countDownTimer.start()
         }
     }
+
+
+    fun verifyCode(collection : CollectionReference, phone: String?){
+        collection.document(phone.toString()).get()
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    if(task.result.exists()){
+
+
+                        if(task.result.getString("code") == betweenUs())
+                            startActivity(Intent(this@CodeRegister, TermsOfUse::class.java))
+                    }
+                }
+            }
+
+
+    }
+
+    private fun betweenUs(): String{
+        return binding.numberOne.text.toString() +
+                binding.numberTwo.text.toString() +
+                binding.numberThree.text.toString() +
+                binding.numberFour.text.toString() +
+                binding.numberFive.text.toString() +
+                binding.numberSix.text.toString()
+    }
+
 }
