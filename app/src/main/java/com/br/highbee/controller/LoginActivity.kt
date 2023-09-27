@@ -26,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
                 if(task.isSuccessful){
                     if (task.result.exists()) {
                         val updates = hashMapOf<String, Any>(
-                            "Code" to numCode(),
-                            "Status" to false
+                            "code" to numCode(),
+                            "status" to false
                         )
 
                         db.collection("users")
