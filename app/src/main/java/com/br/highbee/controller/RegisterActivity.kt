@@ -12,7 +12,7 @@ import com.br.highbee.view.DoneToNext
 import com.br.highbee.view.SharedPref
 import com.br.highbee.view.UpperFirst
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlin.random.Random
+import com.br.highbee.view.RandomNum
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -39,10 +39,10 @@ class RegisterActivity : AppCompatActivity() {
                                 startActivity(intent)
                             }, 2000)
                         } else {
-                            val codeValidation = numCode()
+                            val code = RandomNum.get(999, 999999)
 
                             val user = User(
-                                Code = codeValidation,
+                                Code = code,
                                 FirstName = binding.nameUser.text.toString(),
                                 LastName = binding.lastnameUser.text.toString(),
                                 Phone = binding.celphone.text.toString()
@@ -75,9 +75,5 @@ class RegisterActivity : AppCompatActivity() {
         binding.lastnameUser.addTextChangedListener(UpperFirst(binding.lastnameUser))
         binding.nameUser.setOnEditorActionListener(DoneToNext(binding.nameUser, binding.lastnameUser))
         binding.lastnameUser.setOnEditorActionListener(DoneToNext(binding.lastnameUser, binding.celphone))
-    }
-
-    private fun numCode(): String {
-        return String.format("%06d", Random.nextInt(999, 999999))
     }
 }

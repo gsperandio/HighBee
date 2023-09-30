@@ -8,13 +8,12 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import com.br.highbee.R
 import com.br.highbee.databinding.ActivityCodeRegisterBinding
 import com.br.highbee.view.SharedPref
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.br.highbee.view.RandomNum
 
 class CodeRegister : AppCompatActivity() {
     private lateinit var binding: ActivityCodeRegisterBinding
@@ -142,8 +141,8 @@ class CodeRegister : AppCompatActivity() {
 
         val countDownTimer = object : CountDownTimer(totalTime * 1000L, countDown.toLong()){
             override fun onTick(p0: Long) {
-                val seconds = (p0 / 1000).toInt()
-                binding.secondsToRefresh.text = "Aguarde $seconds segundos para Reenviar o código"
+                val sec = (p0 / 1000).toInt()
+                binding.secondsToRefresh.text = "Aguarde $sec segundos para Reenviar o código"
             }
 
             override fun onFinish() {
@@ -156,8 +155,19 @@ class CodeRegister : AppCompatActivity() {
         countDownTimer.start()
 
         binding.resend.setOnClickListener {
-//            val intent = Intent(this, TermsOfUse::class.java)
-//            startActivity(intent)
+            val updates = hashMapOf<String, Any>(
+                "code" to RandomNum.get(999,999999),
+                "status" to false
+            )
+
+            db.collection("users")
+                .document(phoneCache.toString())
+                .update(updates)
+                .addOnFailureListener { e ->
+                    val intent = Intent(this, WelcomePage::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                }
 
             binding.resend.visibility = View.GONE
             binding.secondsToRefresh.visibility = View.VISIBLE
