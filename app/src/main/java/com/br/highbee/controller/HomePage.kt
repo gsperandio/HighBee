@@ -11,7 +11,7 @@ import com.br.highbee.R
 import com.br.highbee.databinding.ActivityHomePageBinding
 import com.br.highbee.view.SharedPref
 import com.google.gson.Gson
-import com.br.highbee.models.Menu
+import com.br.highbee.models.MenuItem
 
 class HomePage : AppCompatActivity() {
 
@@ -51,17 +51,16 @@ class HomePage : AppCompatActivity() {
         val sharedPref = SharedPref(context)
         val gson = Gson()
 
-        val menu1 = Menu("Perfil", "ic_smile_fill.xml")
-        val menu2 = Menu("Endereços", "ic_map_fill.xml")
-        val menu3 = Menu("Carteira", "ic_card_fill.xml")
-        val menu4 = Menu("Favoritos", "ic_favorite_hand_fill.xml")
-        val menu5 = Menu("Ajuda", "question_fill.xml")
-        val listMenu = listOf(menu1, menu2, menu3, menu4, menu5)
+        val menuItem1 = MenuItem("Perfil", "ic_smile_fill.xml")
+        val menuItem2 = MenuItem("Endereços", "ic_map_fill.xml")
+        val menuItem3 = MenuItem("Carteira", "ic_card_fill.xml")
+        val menuItem4 = MenuItem("Favoritos", "ic_favorite_hand_fill.xml")
+        val menuItem5 = MenuItem("Ajuda", "question_fill.xml")
+        val listMenu = listOf(menuItem1, menuItem2, menuItem3, menuItem4, menuItem5)
 
         sharedPref.saveCache("menu", gson.toJson(listMenu))
 
         val lista = gson.fromJson(gson.toJson(listMenu), List::class.java)
-
     }
 
 }

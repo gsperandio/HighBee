@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Toast
@@ -36,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.logo.startAnimation(fadeInAnimation)
-
-        Handler().postDelayed({
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
             val intent = Intent(this@MainActivity, WelcomePage::class.java)
             startActivity(intent)
             finish()

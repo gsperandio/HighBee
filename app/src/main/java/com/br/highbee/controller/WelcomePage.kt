@@ -19,7 +19,9 @@ class WelcomePage : AppCompatActivity() {
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
 
         binding.haveAccess.setOnClickListener {
-            throw RuntimeException("Test Crash")
+            //val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, HomePage::class.java)
+            startActivity(intent)
         }
 
         binding.dontHaveAccess.setOnClickListener {

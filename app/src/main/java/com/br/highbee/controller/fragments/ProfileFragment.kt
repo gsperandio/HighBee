@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.highbee.R
+import com.br.highbee.databinding.FragmentBagBinding
+import com.br.highbee.databinding.FragmentProfileBinding
+import com.br.highbee.view.AdapterMenu
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +26,7 @@ class ProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var binding: FragmentProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,9 +38,10 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        initRecyclerView()
+        return binding.root
     }
 
     companion object {
@@ -57,4 +63,19 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
+
+    private fun initRecyclerView(){
+        binding.recyclerViewProfileMenu.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewProfileMenu.setHasFixedSize(true)
+        binding.recyclerViewProfileMenu.adapter = AdapterMenu(getList())
+    }
+
+
+    private fun getList() = listOf(
+        "Perfil",
+        "Endereços",
+        "Carteira",
+        "Favoritos",
+        "Ajuda",
+        "Sair")
 }
