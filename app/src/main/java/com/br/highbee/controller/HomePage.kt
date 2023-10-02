@@ -27,7 +27,6 @@ class HomePage : AppCompatActivity() {
 
         initNavigation()
         initBadge()
-        initOptions(this)
     }
 
     private fun initNavigation(){
@@ -40,27 +39,11 @@ class HomePage : AppCompatActivity() {
     private fun initBadge(){
         var badge = binding.bottomNav.getOrCreateBadge(R.id.menu_cart)
 
-        badge.isVisible = false
+        badge.isVisible = true
         badge.number = 99
         badge.backgroundColor = getColor(R.color.yellowStrong)
         badge.badgeTextColor = getColor(R.color.black)
         //badge.horizontalOffset = 15
-    }
-
-    private fun initOptions(context: Context){
-        val sharedPref = SharedPref(context)
-        val gson = Gson()
-
-        val menuItem1 = MenuItem("Perfil", "ic_smile_fill.xml")
-        val menuItem2 = MenuItem("Endereços", "ic_map_fill.xml")
-        val menuItem3 = MenuItem("Carteira", "ic_card_fill.xml")
-        val menuItem4 = MenuItem("Favoritos", "ic_favorite_hand_fill.xml")
-        val menuItem5 = MenuItem("Ajuda", "question_fill.xml")
-        val listMenu = listOf(menuItem1, menuItem2, menuItem3, menuItem4, menuItem5)
-
-        sharedPref.saveCache("menu", gson.toJson(listMenu))
-
-        val lista = gson.fromJson(gson.toJson(listMenu), List::class.java)
     }
 
 }

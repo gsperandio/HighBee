@@ -39,10 +39,8 @@ class RegisterActivity : AppCompatActivity() {
                                 startActivity(intent)
                             }, 2000)
                         } else {
-                            val code = RandomNum.get(999, 999999)
-
                             val user = User(
-                                Code = code,
+                                Code = RandomNum.get(999, 999999),
                                 FirstName = binding.nameUser.text.toString(),
                                 LastName = binding.lastnameUser.text.toString(),
                                 Phone = binding.celphone.text.toString()

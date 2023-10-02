@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.highbee.R
 import com.br.highbee.databinding.FragmentBagBinding
 import com.br.highbee.databinding.FragmentProfileBinding
+import com.br.highbee.models.MenuItem
 import com.br.highbee.view.AdapterMenu
 
 // TODO: Rename parameter arguments, choose names that match
@@ -72,10 +73,10 @@ class ProfileFragment : Fragment() {
 
 
     private fun getList() = listOf(
-        "Perfil",
-        "Endereços",
-        "Carteira",
-        "Favoritos",
-        "Ajuda",
-        "Sair")
+        MenuItem("Perfil", R.drawable.ic_smile_fill),
+        MenuItem("Endereços", R.drawable.ic_map_fill),
+        MenuItem("Carteira", R.drawable.ic_card_fill),
+        MenuItem("Favoritos", R.drawable.ic_favorite_hand_fill),
+        MenuItem("Ajuda", R.drawable.question_fill),
+        MenuItem("Sair", R.drawable.logout_box_r_line))
 }

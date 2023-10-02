@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.br.highbee.R
 import com.br.highbee.databinding.ItemMenuBinding
+import com.br.highbee.models.MenuItem
 
 class AdapterMenu(
-    private val myList: List<String>
+    private val myList: List<MenuItem>
 ) : RecyclerView.Adapter<AdapterMenu.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,10 +30,9 @@ class AdapterMenu(
     inner class MyViewHolder(private val binding: ItemMenuBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: String) {
-            binding.textMenu.text = item
-            Log.d(R.drawable.ic_card_fill.toString(), "--------------------------------------Item Card--------------------------------------")
-            binding.iconMenu.setImageResource(R.drawable.ic_card_fill)
+        fun bind(item: MenuItem) {
+            binding.textMenu.text = item.name
+            binding.iconMenu.setImageResource(item.icon)
         }
     }
 }
