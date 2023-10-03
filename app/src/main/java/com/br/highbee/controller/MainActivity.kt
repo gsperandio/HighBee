@@ -44,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val usersCollection = db.collection("users")
 
-
-        Log.d(phoneCache.toString(), "---------------------------")
         binding.logo.startAnimation(fadeInAnimation)
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
@@ -56,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         if (documentSnapshot.exists()) {
                             val status = task.result?.getBoolean("status") ?: false
                             if(status){
-                                val intent = Intent(this@MainActivity, WelcomePage::class.java)
+                                val intent = Intent(this@MainActivity, HomePage::class.java)
                                 startActivity(intent)
                                 finish()
                             }else{

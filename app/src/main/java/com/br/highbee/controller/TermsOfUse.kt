@@ -30,7 +30,7 @@ class TermsOfUse : AppCompatActivity() {
                     .document(phoneCache.toString())
                     .update(updates)
                     .addOnSuccessListener {
-                        val intent = Intent(this, CodeRegister::class.java)
+                        val intent = Intent(this, HomePage::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     }
@@ -39,11 +39,6 @@ class TermsOfUse : AppCompatActivity() {
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     }
-
-
-                val intent = Intent(this@TermsOfUse, HomePage::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
             }else{
                 showToast()
             }

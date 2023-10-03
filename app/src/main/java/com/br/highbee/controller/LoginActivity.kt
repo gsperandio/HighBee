@@ -8,6 +8,8 @@ import android.os.Looper
 import android.view.View
 import com.br.highbee.R
 import com.br.highbee.databinding.ActivityLoginBinding
+import com.br.highbee.view.RandomNum
+import com.br.highbee.view.SharedPref
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.random.Random
 
@@ -20,13 +22,14 @@ class LoginActivity : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         val usersCollection = db.collection("users")
+        val sharedPref = SharedPref(this)
 
         binding.access.setOnClickListener{
             usersCollection.document(binding.celphone.text.toString()).get().addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     if (task.result.exists()) {
                         val updates = hashMapOf<String, Any>(
-                            "code" to numCode(),
+                            "code" to RandomNum.get(999,999999),
                             "status" to false
                         )
 
@@ -34,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
                             .document(binding.celphone.text.toString())
                             .update(updates)
                             .addOnSuccessListener {
+                                sharedPref.saveCache("phone", binding.celphone.text.toString())
                                 val intent = Intent(this, CodeRegister::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
@@ -61,9 +65,5 @@ class LoginActivity : AppCompatActivity() {
 
             }
         }
-    }
-
-    private fun numCode(): String {
-        return String.format("%06d", Random.nextInt(999, 999999))
     }
 }

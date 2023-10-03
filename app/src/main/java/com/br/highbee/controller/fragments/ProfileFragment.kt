@@ -79,4 +79,4 @@ class ProfileFragment : Fragment() {
         MenuItem("Favoritos", R.drawable.ic_favorite_hand_fill),
         MenuItem("Ajuda", R.drawable.question_fill),
         MenuItem("Sair", R.drawable.logout_box_r_line))
-}
+    }

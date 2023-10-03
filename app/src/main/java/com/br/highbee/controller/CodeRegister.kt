@@ -29,7 +29,7 @@ class CodeRegister : AppCompatActivity() {
         val usersCollection = db.collection("users")
 
         binding.returningButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, WelcomePage::class.java)
             startActivity(intent)
         }
 
