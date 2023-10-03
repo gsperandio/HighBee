@@ -1,6 +1,7 @@
 package com.br.highbee.view
 
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -35,11 +36,10 @@ class AdapterProducts(
         fun bind(item: ProductsHome) {
             binding.title.text = item.name
             binding.price.text = "R$  ${item.price}"
-            binding.imageCard.load("https://img.freepik.com/fotos-gratis/uma-pintura-de-um-lago-de-montanha-com-uma-montanha-ao-fundo_188544-9126.jpg"){
-                crossfade(true)
+            val uri = Uri.parse(item.img)
+            binding.imageCard.load(uri){
                 placeholder(R.drawable.logo)
             }
-
         }
     }
 }
