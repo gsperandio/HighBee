@@ -19,7 +19,6 @@
 
             <ImageView
                 android:id="@+id/imageCard"
-                android:src="@drawable/wallpaper"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
@@ -61,14 +60,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinssemibolditalic"
                     android:text="R$ 85.50"
-                    android:textColor="?android:attr/textColorSecondary"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                    app:layout_constraintEnd_toStartOf="@+id/addProduct"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/addProduct"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@color/white"

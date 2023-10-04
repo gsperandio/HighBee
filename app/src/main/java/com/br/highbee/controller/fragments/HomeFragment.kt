@@ -73,13 +73,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun getList() = listOf(
-        ProductsHome("Colombian Gold", "https://images2.imgbox.com/a4/77/PyCRP4UJ_o.jpg", BigDecimal("75.99")),
+        ProductsHome("Colombian Gold", "https://cdn.dribbble.com/users/642793/screenshots/16922447/media/bace1bf7b4d7317d21051e0029cc3287.png", BigDecimal("75.99")),
         ProductsHome("AK-47", "https://cdn.dribbble.com/userupload/3162010/file/original-a2d1e344c3a3edd66ccec191400ca6d8.jpg", BigDecimal("42.50")),
         ProductsHome("Orange Kush", "https://cdn.dribbble.com/userupload/3162007/file/original-84419bd0d5a63966ecbfaeae1ece6316.jpg", BigDecimal("99.90")),
         ProductsHome("Purple Haze", "https://cdn.dribbble.com/users/10132200/screenshots/18510100/media/87c06e52c63d56d4f8a7bad3d1b2050a.jpg", BigDecimal("54.75")),
         ProductsHome("Blue Dream", "https://cdn.dribbble.com/userupload/3161986/file/original-2e448b501f9efd6cdafd7848b32a7a76.jpg", BigDecimal("31.25")),
         ProductsHome("Sour Diesel", "https://cdn.dribbble.com/userupload/3161983/file/original-b8fec78e95bda228ff68dbdc8e3c13c8.jpg", BigDecimal("68.00")),
-        ProductsHome("OG Kush", "https://santasementebr.com/wp-content/uploads/2021/07/super-og-kush-product-image-4939.jpg", BigDecimal("89.99")),
+        ProductsHome("OG Kush", "https://cdn.dribbble.com/users/642793/screenshots/16562527/media/a605bbde6a42707165088c9040ee6925.png", BigDecimal("89.99")),
         ProductsHome("White Widow", "https://cdn.dribbble.com/userupload/8363870/file/original-97cf36b44f748e3b071e21b7a49750bf.png", BigDecimal("45.60")),
         ProductsHome("Girl Scout Cookies", "https://cdn.dribbble.com/users/214940/screenshots/1993323/media/ad45a60582e32cac16c97de04f5bba22.jpg", BigDecimal("79.50")),
         ProductsHome("Pineapple Express", "https://cdn.dribbble.com/userupload/3482515/file/original-0dc05032bd7fbf058a755d814c345e5e.jpg", BigDecimal("22.75")),

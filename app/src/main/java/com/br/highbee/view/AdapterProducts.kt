@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.br.highbee.databinding.ItemCardBinding
@@ -18,6 +19,8 @@ import com.br.highbee.R
 class AdapterProducts(
     private val myList: List<ProductsHome>
 ) : RecyclerView.Adapter<AdapterProducts.MyViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterProducts.MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCardBinding.inflate(inflater, parent, false)
@@ -40,6 +43,15 @@ class AdapterProducts(
             binding.imageCard.load(uri){
                 placeholder(R.drawable.logo)
             }
+
+            binding.addProduct.setOnClickListener {
+                Toast.makeText(itemView.context, "${item.name} with coast ${item.price}", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+
+    private fun showToast(message: String) {
+
     }
 }
