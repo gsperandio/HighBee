@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.widget.Toast
 import com.br.highbee.databinding.ActivityMainBinding
 import com.br.highbee.view.SharedPref
 import com.google.firebase.firestore.FirebaseFirestore
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                         if (documentSnapshot.exists()) {
                             val status = task.result?.getBoolean("status") ?: false
                             if(status){
-                                val intent = Intent(this@MainActivity, HomePage::class.java)
+                                val intent = Intent(this@MainActivity, HomePageActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }else{

@@ -22,7 +22,7 @@
             android:exported="false"
             android:label="Home" />
         <activity
-            android:name=".controller.HomePage"
+            android:name=".controller.HomePageActivity"
             android:exported="false" />
         <activity
             android:name=".controller.TermsOfUse"

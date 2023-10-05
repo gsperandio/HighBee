@@ -1,6 +1,5 @@
 package com.br.highbee.controller
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
@@ -9,11 +8,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.br.highbee.R
 import com.br.highbee.databinding.ActivityHomePageBinding
-import com.br.highbee.view.SharedPref
-import com.google.gson.Gson
-import com.br.highbee.models.MenuItem
 
-class HomePage : AppCompatActivity() {
+class HomePageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomePageBinding
     private lateinit var navHostFragment: NavHostFragment

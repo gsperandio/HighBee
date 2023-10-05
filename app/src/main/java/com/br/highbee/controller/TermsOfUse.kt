@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.br.highbee.R
 import com.br.highbee.databinding.ActivityTermsOfUseBinding
 import com.br.highbee.view.SharedPref
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,7 +29,7 @@ class TermsOfUse : AppCompatActivity() {
                     .document(phoneCache.toString())
                     .update(updates)
                     .addOnSuccessListener {
-                        val intent = Intent(this, HomePage::class.java)
+                        val intent = Intent(this, HomePageActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     }

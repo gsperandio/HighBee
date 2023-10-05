@@ -1,9 +1,13 @@
 package com.br.highbee.view
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +18,11 @@ import java.net.URL
 import coil.request.ErrorResult
 import coil.request.ImageRequest
 import com.br.highbee.R
+import com.br.highbee.controller.CodeRegister
+import com.br.highbee.controller.LoginActivity
+import com.br.highbee.controller.WelcomePage
+import com.br.highbee.model.User
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class AdapterProducts(
@@ -44,14 +53,30 @@ class AdapterProducts(
                 placeholder(R.drawable.logo)
             }
 
+            val db = FirebaseFirestore.getInstance()
+            val usersCollection = db.collection("products")
+            val sharedPref = SharedPref(binding.root.context)
+            val phoneCache: String? = sharedPref.findCache("phone")
+
             binding.addProduct.setOnClickListener {
-                Toast.makeText(itemView.context, "${item.name} with coast ${item.price}", Toast.LENGTH_SHORT).show()
+                    usersCollection.document(phoneCache.toString()).get()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val documentSnapshot = task.result
+                                if (documentSnapshot.exists()) {
+
+
+                                } else {
+                                    db.collection("products").document(phoneCache.toString()).set(item)
+                                }
+                            } else {
+                                val exception = task.exception
+                                if (exception != null) {
+                                    Toast.makeText(binding.root.context, "Erro ao adicionar produto na sacola", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                }
             }
         }
-    }
-
-
-    private fun showToast(message: String) {
-
     }
 }
