@@ -19,6 +19,7 @@ import coil.request.ErrorResult
 import coil.request.ImageRequest
 import com.br.highbee.R
 import com.br.highbee.controller.CodeRegister
+import com.br.highbee.controller.HomePageActivity
 import com.br.highbee.controller.LoginActivity
 import com.br.highbee.controller.WelcomePage
 import com.br.highbee.model.User
@@ -48,33 +49,21 @@ class AdapterProducts(
         fun bind(item: ProductsHome) {
             binding.title.text = item.name
             binding.price.text = "R$  ${item.price}"
-            val uri = Uri.parse(item.img)
-            binding.imageCard.load(uri){
+
+            binding.imageCard.load(Uri.parse(item.img)){
                 placeholder(R.drawable.logo)
             }
 
             val db = FirebaseFirestore.getInstance()
-            val usersCollection = db.collection("products")
-            val sharedPref = SharedPref(binding.root.context)
-            val phoneCache: String? = sharedPref.findCache("phone")
+            val crudUse = CRUD(binding.root.context)
+            val pref = SharedPref(binding.root.context)
 
             binding.addProduct.setOnClickListener {
-                    usersCollection.document(phoneCache.toString()).get()
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val documentSnapshot = task.result
-                                if (documentSnapshot.exists()) {
+                val added = crudUse.createOrUpdateProduct(item.id, item)
+                val prefProd = pref.findCache("products")
 
-
-                                } else {
-                                    db.collection("products").document(phoneCache.toString()).set(item)
-                                }
-                            } else {
-                                val exception = task.exception
-                                if (exception != null) {
-                                    Toast.makeText(binding.root.context, "Erro ao adicionar produto na sacola", Toast.LENGTH_SHORT).show()
-                                }
-                            }
+                if(prefProd != null){
+                    Toast.makeText(binding.root.context, "${added} - ${prefProd}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

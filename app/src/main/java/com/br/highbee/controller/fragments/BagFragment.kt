@@ -37,7 +37,8 @@ class BagFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBagBinding.inflate(inflater, container, false)
 
-        //binding.textoTeste.text = "Olá"
+
+
         return binding.root
     }
 

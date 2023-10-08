@@ -22,7 +22,7 @@ class HomePageActivity : AppCompatActivity() {
         setContentView(view)
 
         initNavigation()
-        initBadge()
+        initBadge(0)
     }
 
     private fun initNavigation(){
@@ -32,11 +32,11 @@ class HomePageActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
     }
 
-    private fun initBadge(){
+    private fun initBadge(numBadge: Int){
         var badge = binding.bottomNav.getOrCreateBadge(R.id.menu_cart)
 
-        badge.isVisible = true
-        badge.number = 99
+        badge.isVisible = numBadge > 0
+        badge.number = numBadge
         badge.backgroundColor = getColor(R.color.yellowStrong)
         badge.badgeTextColor = getColor(R.color.black)
         //badge.horizontalOffset = 15
