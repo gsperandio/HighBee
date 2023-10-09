@@ -25,7 +25,7 @@ class AdapterBag(private  val myList: MutableList<ProductsBag>) : RecyclerView.A
 
     inner class MyViewHolder(private val binding: ItemBagBinding) :
         RecyclerView.ViewHolder(binding.root){
-
+        val crud = CRUD(binding.root.context)
         fun bind(item: ProductsBag){
             binding.titleItemBag.text = item.name
             binding.subtitleItemBag.text = item.desc
@@ -34,8 +34,15 @@ class AdapterBag(private  val myList: MutableList<ProductsBag>) : RecyclerView.A
                 placeholder(R.drawable.logo)
             }
             binding.priceItem.text = ("R$ %.2f".format(Math.round(item.qtd * item.price)))
-        }
 
+            binding.deleteProduct.setOnClickListener {
+                crud.removeProduct(item.id)
+            }
+
+            binding.addProduct.setOnClickListener {
+                //crud.createOrUpdateProduct(item.id, item)
+            }
+        }
     }
 
 }

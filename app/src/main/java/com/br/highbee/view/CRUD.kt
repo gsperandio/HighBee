@@ -39,7 +39,7 @@ class CRUD(context: Context) {
         }
     }
 
-    fun deleteProduct(id: Int): String {
+    fun decrementProduct(id: Int): String {
         try{
             val productsList = getProductsList()
             val product = productsList.find { it.id == id }
@@ -57,6 +57,23 @@ class CRUD(context: Context) {
                 }
 
                 encodeJson(productsList)
+            }
+            return msg
+        }catch(ex: Exception){
+            return "Erro ao adicionar produto"
+        }
+    }
+
+    fun removeProduct(id: Int): String {
+        try{
+            val productsList = getProductsList()
+            val product = productsList.find { it.id == id }
+            var msg = ""
+            if (product != null && product.qtd > 0) {
+
+                    productsList.remove(product)
+                    encodeJson(productsList)
+                    msg = "Produto excluido"
             }
             return msg
         }catch(ex: Exception){
