@@ -29,7 +29,7 @@ class CRUD(context: Context) {
             if (product != null) {
                 product.qtd++
             } else {
-                val newProduct = ProductsBag(item.id, item.name, item.img, item.price, 1)
+                val newProduct = ProductsBag(item.id, item.name, item.desc, item.img, item.price, 1)
                 productsList.add(newProduct)
             }
 

@@ -54,7 +54,6 @@ class AdapterProducts(
                 placeholder(R.drawable.logo)
             }
 
-            val db = FirebaseFirestore.getInstance()
             val crudUse = CRUD(binding.root.context)
             val pref = SharedPref(binding.root.context)
 
@@ -63,7 +62,7 @@ class AdapterProducts(
                 val prefProd = pref.findCache("products")
 
                 if(prefProd != null){
-                    Toast.makeText(binding.root.context, "${added} - ${prefProd}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(binding.root.context, "${added}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
