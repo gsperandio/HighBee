@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.highbee.databinding.FragmentBagBinding
+import com.br.highbee.view.AdapterBag
+import com.br.highbee.view.AdapterMenu
+import com.br.highbee.view.CRUD
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +26,8 @@ class BagFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentBagBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,9 +42,7 @@ class BagFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentBagBinding.inflate(inflater, container, false)
-
-
-
+        initRecyclerView()
         return binding.root
     }
 
@@ -60,5 +64,20 @@ class BagFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun initRecyclerView(){
+
+        val list = CRUD(binding.root.context).getProductsList()
+
+        if (list.isEmpty()){
+            binding.animationBag.visibility = View.VISIBLE
+            binding.recyclerViewBagProducts.visibility = View.GONE
+        }else{
+            binding.recyclerViewBagProducts.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerViewBagProducts.setHasFixedSize(true)
+            binding.recyclerViewBagProducts.adapter = AdapterBag(list)
+        }
+
     }
 }

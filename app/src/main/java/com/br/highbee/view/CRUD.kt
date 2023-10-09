@@ -9,9 +9,8 @@ import kotlinx.serialization.encodeToString
 
 class CRUD(context: Context) {
     private val sharedPref = SharedPref(context)
-    private val json = Json { ignoreUnknownKeys = true }
 
-    private fun getProductsList(): MutableList<ProductsBag> {
+     fun getProductsList(): MutableList<ProductsBag> {
         val productsListJson: String? = sharedPref.findCache("products")
 
         return if (productsListJson != null) {

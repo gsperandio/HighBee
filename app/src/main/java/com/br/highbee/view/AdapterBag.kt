@@ -1,6 +1,5 @@
 package com.br.highbee.view
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import com.br.highbee.R
 import com.br.highbee.databinding.ItemBagBinding
 import com.br.highbee.models.ProductsBag
 
-class AdapterBag(private  val myList: List<ProductsBag>) : RecyclerView.Adapter<AdapterBag.MyViewHolder>() {
+class AdapterBag(private  val myList: MutableList<ProductsBag>) : RecyclerView.Adapter<AdapterBag.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterBag.MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBagBinding.inflate(inflater, parent, false)
