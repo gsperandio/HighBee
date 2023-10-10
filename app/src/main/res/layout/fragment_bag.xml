@@ -4,8 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.fragments.BagFragment"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:background="@drawable/default_header">
+            <TextView
+                android:id="@+id/finish"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/default_button"
+                android:fontFamily="@font/poppinssemibold"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Comprar"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginVertical="5dp"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBagProducts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"/>
+    </LinearLayout>
 <LinearLayout
     android:id="@+id/animationBag"
     android:layout_width="match_parent"
@@ -30,9 +63,7 @@
         android:fontFamily="@font/poppinsextralightitalic"
         android:textColor="@color/black"/>
 </LinearLayout>
-<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewBagProducts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"/>
+
+
+
 </FrameLayout>

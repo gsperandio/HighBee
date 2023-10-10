@@ -48,7 +48,7 @@ class AdapterProducts(
 
         fun bind(item: ProductsHome) {
             binding.title.text = item.name
-            binding.price.text = "R$  ${item.price}"
+            binding.price.text = "R$ %.2f".format(item.price)
 
             binding.imageCard.load(Uri.parse(item.img)){
                 placeholder(R.drawable.logo)

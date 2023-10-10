@@ -1,16 +1,22 @@
 package com.br.highbee.controller.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.br.highbee.databinding.FragmentBagBinding
 import com.br.highbee.models.ProductsBag
 import com.br.highbee.view.AdapterBag
 import com.br.highbee.view.AdapterMenu
 import com.br.highbee.view.CRUD
+import com.br.highbee.view.SharedPref
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +33,8 @@ class BagFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentBagBinding
-
+    private lateinit var adapterBag: AdapterBag
+    private var list: MutableList<ProductsBag> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -43,6 +50,10 @@ class BagFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBagBinding.inflate(inflater, container, false)
         initRecyclerView()
+        binding.finish.setOnClickListener {
+            FinishyBaby()
+        }
+
         return binding.root
     }
 
@@ -66,21 +77,48 @@ class BagFragment : Fragment() {
             }
     }
 
+
     private fun initRecyclerView(){
 
-        val list = CRUD(binding.root.context).getProductsList()
+        list = CRUD(requireContext()).getProductsList()
 
         if (list.isEmpty()){
             binding.animationBag.visibility = View.VISIBLE
             binding.recyclerViewBagProducts.visibility = View.INVISIBLE
+            binding.header.visibility = View.INVISIBLE
         }else{
             binding.recyclerViewBagProducts.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewBagProducts.setHasFixedSize(true)
-            binding.recyclerViewBagProducts.adapter = AdapterBag(list)
+            adapterBag = AdapterBag(list)
+            binding.recyclerViewBagProducts.adapter = adapterBag
             binding.animationBag.visibility = View.INVISIBLE
             binding.recyclerViewBagProducts.visibility = View.VISIBLE
+            binding.header.visibility = View.VISIBLE
+        }
+    }
 
+
+    private fun FinishyBaby(){
+        val db = FirebaseFirestore.getInstance()
+        val usersCollection = db.collection("products")
+        val sharedPref = SharedPref(requireContext())
+        val items = CRUD(requireContext()).getProductsList()
+        val phoneCache: String? = sharedPref.findCache("phone")
+
+        val productMap = mutableMapOf<String, ProductsBag>()
+        items.forEach { product ->
+            productMap[product.id.toString()] = product
         }
 
+        db.collection("products").document(phoneCache.toString()).set(productMap)
+        .addOnSuccessListener {
+            Toast.makeText(requireContext(), "Produtos COMPRADOS com sucesso", Toast.LENGTH_SHORT).show()
+        }
+        .addOnFailureListener {
+            Toast.makeText(requireContext(), "Erro ao comprar produtos", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
+
 }
