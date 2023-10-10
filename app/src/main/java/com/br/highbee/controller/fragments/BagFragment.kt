@@ -81,15 +81,17 @@ class BagFragment : Fragment() {
     private fun initRecyclerView(){
 
         list = CRUD(requireContext()).getProductsList()
+        list.reverse()
 
         if (list.isEmpty()){
             binding.animationBag.visibility = View.VISIBLE
             binding.recyclerViewBagProducts.visibility = View.INVISIBLE
             binding.header.visibility = View.INVISIBLE
         }else{
+            binding.totalPrice.text = totalPrice(list)
             binding.recyclerViewBagProducts.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewBagProducts.setHasFixedSize(true)
-            adapterBag = AdapterBag(list)
+            adapterBag = AdapterBag(list, binding.totalPrice)
             binding.recyclerViewBagProducts.adapter = adapterBag
             binding.animationBag.visibility = View.INVISIBLE
             binding.recyclerViewBagProducts.visibility = View.VISIBLE
@@ -100,7 +102,7 @@ class BagFragment : Fragment() {
 
     private fun FinishyBaby(){
         val db = FirebaseFirestore.getInstance()
-        val usersCollection = db.collection("products")
+        val dbColl = db.collection("products")
         val sharedPref = SharedPref(requireContext())
         val items = CRUD(requireContext()).getProductsList()
         val phoneCache: String? = sharedPref.findCache("phone")
@@ -110,15 +112,28 @@ class BagFragment : Fragment() {
             productMap[product.id.toString()] = product
         }
 
-        db.collection("products").document(phoneCache.toString()).set(productMap)
+        dbColl.document(phoneCache.toString()).set(productMap)
         .addOnSuccessListener {
-            Toast.makeText(requireContext(), "Produtos COMPRADOS com sucesso", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Compra finalizada!!!", Toast.LENGTH_SHORT).show()
         }
         .addOnFailureListener {
             Toast.makeText(requireContext(), "Erro ao comprar produtos", Toast.LENGTH_SHORT).show()
         }
 
-
+        sharedPref.removeCache("products")
+        initRecyclerView()
     }
+
+    fun totalPrice(list: MutableList<ProductsBag>): String {
+        var total: Double = 0.0
+
+        for (item in list) {
+            val subtotal = item.qtd * item.price
+            total += subtotal
+        }
+
+        return "R$ %.2f".format(total)
+    }
+
 
 }

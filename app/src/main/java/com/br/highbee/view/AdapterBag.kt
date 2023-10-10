@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.br.highbee.R
@@ -14,7 +15,8 @@ import com.br.highbee.model.User
 import com.br.highbee.models.MenuItem
 import com.br.highbee.models.ProductsBag
 import com.br.highbee.models.ProductsHome
-class AdapterBag(private var myList: MutableList<ProductsBag>) : RecyclerView.Adapter<AdapterBag.MyViewHolder>() {
+class AdapterBag(private var myList: MutableList<ProductsBag>,
+                 private val totalPrice: TextView) : RecyclerView.Adapter<AdapterBag.MyViewHolder>() {
     private lateinit var frag: FragmentBagBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterBag.MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -50,26 +52,44 @@ class AdapterBag(private var myList: MutableList<ProductsBag>) : RecyclerView.Ad
             binding.imageCard.load(Uri.parse(item.img)) {
                 placeholder(R.drawable.logo)
             }
+
             binding.priceItem.text = "R$ %.2f".format(item.qtd * item.price)
 
             binding.deleteProduct.setOnClickListener {
                 crud.removeProduct(item.id)
                 myList = crud.getProductsList()
+                myList.reverse()
+                totalPrice.text = totalPrice(myList)
                 notifyDataSetChanged()
             }
 
             binding.addProduct.setOnClickListener {
                 crud.createOrUpdateProduct(item.id, produtoDesnecessauro)
                 myList = crud.getProductsList()
+                myList.reverse()
+                totalPrice.text = totalPrice(myList)
                 notifyDataSetChanged()
             }
 
             binding.subProduct.setOnClickListener {
                 crud.decrementProduct(item.id)
                 myList = crud.getProductsList()
+                myList.reverse()
+                totalPrice.text = totalPrice(myList)
                 notifyDataSetChanged()
             }
 
         }
+    }
+
+    fun totalPrice(list: MutableList<ProductsBag>): String {
+        var total: Double = 0.0
+
+        for (item in list) {
+            val subtotal = item.qtd * item.price
+            total += subtotal
+        }
+
+        return "R$ %.2f".format(total)
     }
 }
