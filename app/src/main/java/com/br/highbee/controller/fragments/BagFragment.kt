@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.highbee.databinding.FragmentBagBinding
+import com.br.highbee.models.ProductsBag
 import com.br.highbee.view.AdapterBag
 import com.br.highbee.view.AdapterMenu
 import com.br.highbee.view.CRUD
@@ -26,7 +27,6 @@ class BagFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentBagBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +72,14 @@ class BagFragment : Fragment() {
 
         if (list.isEmpty()){
             binding.animationBag.visibility = View.VISIBLE
-            binding.recyclerViewBagProducts.visibility = View.GONE
+            binding.recyclerViewBagProducts.visibility = View.INVISIBLE
         }else{
             binding.recyclerViewBagProducts.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewBagProducts.setHasFixedSize(true)
             binding.recyclerViewBagProducts.adapter = AdapterBag(list)
+            binding.animationBag.visibility = View.INVISIBLE
+            binding.recyclerViewBagProducts.visibility = View.VISIBLE
+
         }
 
     }
