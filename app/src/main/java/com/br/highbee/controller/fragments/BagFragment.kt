@@ -98,7 +98,7 @@ class BagFragment : Fragment() {
             binding.header.visibility = View.VISIBLE
         }
     }
-S
+
 
     private fun FinishyBaby(){
         val db = FirebaseFirestore.getInstance()
@@ -124,7 +124,7 @@ S
         initRecyclerView()
     }
 
-    fun totalPrice(list: MutableList<ProductsBag>): String {
+    private fun totalPrice(list: MutableList<ProductsBag>): String {
         var total: Double = 0.0
 
         for (item in list) {

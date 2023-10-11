@@ -49,7 +49,7 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
             binding.titleItemBag.text = item.name
             binding.subtitleItemBag.text = item.desc
             binding.qtItem.text = item.qtd.toString()
-            binding.imageCard.load(Uri.parse(item.img)) {
+            binding.imageCard.load(Uri.parse(alterarLink(item.img))) {
                 placeholder(R.drawable.logo)
             }
 
@@ -82,7 +82,7 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
         }
     }
 
-    fun totalPrice(list: MutableList<ProductsBag>) {
+    private fun totalPrice(list: MutableList<ProductsBag>) {
         var total: Double = 0.0
 
         for (item in list) {
@@ -91,5 +91,11 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
         }
 
         totalPrice.text =  "R$ %.2f".format(total)
+    }
+
+    private fun alterarLink(linkOriginal: String): String {
+        val padrao = Regex("resize=\\d+x\\d+")
+        val linkAlterado = padrao.replace(linkOriginal, "resize=400x400")
+        return linkAlterado
     }
 }
