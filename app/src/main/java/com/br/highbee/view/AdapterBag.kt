@@ -59,7 +59,7 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
                 crud.removeProduct(item.id)
                 myList = crud.getProductsList()
                 myList.reverse()
-                totalPrice.text = totalPrice(myList)
+                totalPrice(myList)
                 notifyDataSetChanged()
             }
 
@@ -67,7 +67,7 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
                 crud.createOrUpdateProduct(item.id, produtoDesnecessauro)
                 myList = crud.getProductsList()
                 myList.reverse()
-                totalPrice.text = totalPrice(myList)
+                 totalPrice(myList)
                 notifyDataSetChanged()
             }
 
@@ -75,14 +75,14 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
                 crud.decrementProduct(item.id)
                 myList = crud.getProductsList()
                 myList.reverse()
-                totalPrice.text = totalPrice(myList)
+                totalPrice(myList)
                 notifyDataSetChanged()
             }
 
         }
     }
 
-    fun totalPrice(list: MutableList<ProductsBag>): String {
+    fun totalPrice(list: MutableList<ProductsBag>) {
         var total: Double = 0.0
 
         for (item in list) {
@@ -90,6 +90,6 @@ class AdapterBag(private var myList: MutableList<ProductsBag>,
             total += subtotal
         }
 
-        return "R$ %.2f".format(total)
+        totalPrice.text =  "R$ %.2f".format(total)
     }
 }

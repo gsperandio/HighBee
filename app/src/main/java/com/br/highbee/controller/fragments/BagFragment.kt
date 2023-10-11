@@ -98,7 +98,7 @@ class BagFragment : Fragment() {
             binding.header.visibility = View.VISIBLE
         }
     }
-
+S
 
     private fun FinishyBaby(){
         val db = FirebaseFirestore.getInstance()

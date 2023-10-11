@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         fadeInAnimation.duration = 1000
         fadeInAnimation.fillAfter = true
 
-        fadeInAnimation.setAnimationListener(object : Animation.AnimationListener{
+        fadeInAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
             }
 
@@ -36,37 +36,45 @@ class MainActivity : AppCompatActivity() {
             override fun onAnimationRepeat(p0: Animation?) {
             }
         })
-        val sharedPref = SharedPref(this)
-        val phoneCache: String? = sharedPref.findCache("phone")
+
+        val phoneCache: String? = SharedPref(this).findCache("phone")
+
+
         val db = FirebaseFirestore.getInstance()
         val usersCollection = db.collection("users")
 
         binding.logo.startAnimation(fadeInAnimation)
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            usersCollection.document(phoneCache.toString()).get()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val documentSnapshot = task.result
-                        if (documentSnapshot.exists()) {
-                            val status = task.result?.getBoolean("status") ?: false
-                            if(status){
-                                val intent = Intent(this@MainActivity, HomePageActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }else{
+            if (phoneCache == null) {
+                val intent = Intent(this@MainActivity, WelcomePage::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                usersCollection.document(phoneCache.toString()).get()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val documentSnapshot = task.result
+                            if (documentSnapshot.exists()) {
+                                val status = task.result?.getBoolean("status") ?: false
+                                if (status) {
+                                    val intent =
+                                        Intent(this@MainActivity, HomePageActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    val intent = Intent(this@MainActivity, WelcomePage::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            } else {
                                 val intent = Intent(this@MainActivity, WelcomePage::class.java)
                                 startActivity(intent)
                                 finish()
                             }
-                        }else{
-                            val intent = Intent(this@MainActivity, WelcomePage::class.java)
-                            startActivity(intent)
-                            finish()
                         }
                     }
-                }
-
+            }
         }, 1800)
     }
 }

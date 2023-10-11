@@ -73,17 +73,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun getList() = listOf(
-        ProductsHome(1,"Colombian Gold","Desc de um produto", "https://cdn.dribbble.com/users/642793/screenshots/16922447/media/bace1bf7b4d7317d21051e0029cc3287.png", 75.99),
-        ProductsHome(2,"AK-47", "Desc de um produto", "https://cdn.dribbble.com/userupload/3162010/file/original-a2d1e344c3a3edd66ccec191400ca6d8.jpg", 42.50),
-        ProductsHome(3,"Orange Kush", "Desc de um produto", "https://cdn.dribbble.com/userupload/3162007/file/original-84419bd0d5a63966ecbfaeae1ece6316.jpg", 99.90),
-        ProductsHome(4,"Purple Haze", "Desc de um produto", "https://cdn.dribbble.com/users/10132200/screenshots/18510100/media/87c06e52c63d56d4f8a7bad3d1b2050a.jpg", 54.75),
-        ProductsHome(5,"Blue Dream", "Desc de um produto", "https://cdn.dribbble.com/userupload/3161986/file/original-2e448b501f9efd6cdafd7848b32a7a76.jpg", 31.25),
-        ProductsHome(6,"Sour Diesel","Desc de um produto", "https://cdn.dribbble.com/userupload/3161983/file/original-b8fec78e95bda228ff68dbdc8e3c13c8.jpg", 68.00),
-        ProductsHome(7,"OG Kush", "Desc de um produto", "https://cdn.dribbble.com/users/642793/screenshots/16562527/media/a605bbde6a42707165088c9040ee6925.png", 89.99),
-        ProductsHome(8,"White Widow", "Desc de um produto", "https://cdn.dribbble.com/userupload/8363870/file/original-97cf36b44f748e3b071e21b7a49750bf.png", 45.60),
-        ProductsHome(9,"Girl Scout Cookies", "Desc de um produto", "https://cdn.dribbble.com/users/214940/screenshots/1993323/media/ad45a60582e32cac16c97de04f5bba22.jpg", 79.50),
-        ProductsHome(10,"Pineapple Express", "Desc de um produto", "https://cdn.dribbble.com/userupload/3482515/file/original-0dc05032bd7fbf058a755d814c345e5e.jpg", 22.75),
-        ProductsHome(11,"Northern Lights", "Desc de um produto", "https://cdn.dribbble.com/users/3486994/screenshots/11531422/media/4b1d25dbc992c771134dc19e548e4ff7.png", 59.99),
-        ProductsHome(12,"Green Crack", "Desc de um produto", "https://cdn.dribbble.com/userupload/8806891/file/original-5b13d8eff42197ddc1825c94b6109729.png", 38.25)
+        ProductsHome(1,"Colombian Gold","Desc de um produto", "https://cdn.dribbble.com/userupload/5828897/file/original-3918d15943c4ffbebec75cbada1f661a.jpg?resize=200x200", 75.99),
+        ProductsHome(2,"AK-47", "Desc de um produto", "https://cdn.dribbble.com/userupload/8969527/file/original-ba35a2a2782fa4758bd2ee534144b5a7.png?resize=200x200", 42.50),
+        ProductsHome(3,"Orange Kush", "Desc de um produto", "https://cdn.dribbble.com/userupload/9674824/file/original-332e78f50133d0e82877e6e94401693b.jpg?resize=200x200", 99.90),
+        ProductsHome(4,"Purple Haze", "Desc de um produto", "https://cdn.dribbble.com/userupload/8806891/file/original-5b13d8eff42197ddc1825c94b6109729.png?resize=200x200", 54.75),
+        ProductsHome(5,"Blue Dream", "Desc de um produto", "https://cdn.dribbble.com/userupload/7785887/file/original-f8a4ebbf13df653591d9582562412588.png?resize=200x200", 31.25),
+        ProductsHome(6,"Sour Diesel","Desc de um produto", "https://cdn.dribbble.com/userupload/6448178/file/original-718011f5e886d454c71659fa3702c99f.jpg?resize=200x200", 68.00),
+        ProductsHome(7,"OG Kush", "Desc de um produto", "https://cdn.dribbble.com/userupload/4913742/file/original-db72d36e7ee983b3e3a5a606d5a11f4a.jpg?resize=200x200", 89.99),
+        ProductsHome(8,"White Widow", "Desc de um produto", "https://cdn.dribbble.com/users/642793/screenshots/16734553/media/6a6ef2de78e3f7c76167c2d74d519be5.png?resize=200x200", 45.60),
+        ProductsHome(9,"Girl Scout Cookies", "Desc de um produto", "https://cdn.dribbble.com/users/1358460/screenshots/14010929/media/57a1f99a9ea4e158453e3e95eb2f6291.jpg?resize=200x200", 79.50),
+        ProductsHome(10,"Pineapple Express", "Desc de um produto", "https://cdn.dribbble.com/users/1633085/screenshots/16865805/media/9a1c0e3c73dafd45c8a2804abdc21219.jpg?resize=200x200&vertical=center", 22.75),
+        ProductsHome(11,"Northern Lights", "Desc de um produto", "https://cdn.dribbble.com/userupload/2706158/file/original-141167bbbdfe5c4ccb45d12143cbb7db.jpg?resize=200x200", 59.99),
+        ProductsHome(12,"Green Crack", "Desc de um produto", "https://cdn.dribbble.com/userupload/10101238/file/original-e67a5ba30b5c84912b7bbf6fe9e832cb.png?resize=200x200", 38.25)
     )
 }
